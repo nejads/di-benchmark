@@ -9,6 +9,7 @@ import static com.greenlaw110.di_benchmark.DIFactory.pico;
 import static com.greenlaw110.di_benchmark.DIFactory.spring;
 import static com.greenlaw110.di_benchmark.DIFactory.vanilla;
 
+import com.greenlaw110.di_benchmark.DIFactory.DaggerComponent;
 import org.codejargon.feather.Feather;
 import org.osgl.inject.Genie;
 import org.picocontainer.MutablePicoContainer;
@@ -63,7 +64,7 @@ public class StartupBenchmark {
 		});
 		StopWatch.millis("Dagger", () -> {
 			for (int i = 0; i < iterations; ++i) {
-				ObjectGraph dagger = dagger();
+				DaggerComponent dagger = dagger();
 				dagger.get(A.class);
 			}
 		});

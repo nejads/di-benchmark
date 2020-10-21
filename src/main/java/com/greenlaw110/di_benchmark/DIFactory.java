@@ -1,6 +1,7 @@
 package com.greenlaw110.di_benchmark;
 
 import com.greenlaw110.di_benchmark.objects.*;
+import javax.inject.Singleton;
 import org.codejargon.feather.Feather;
 import org.osgl.inject.Genie;
 import org.osgl.inject.ScopeCache;
@@ -105,11 +106,11 @@ public class DIFactory {
         return genie;
     }
 
-    public static ObjectGraph dagger() {
-        return ObjectGraph.create(new DaggerModule());
+    public static DaggerComponent dagger() {
+        return DaggerDIFactory_DaggerComponent.builder().build();
     }
 
-    @Module(injects = {A.class, A0.class})
+    @Module
     public static class DaggerModule {
         @dagger.Provides
         E e() {
@@ -117,14 +118,33 @@ public class DIFactory {
         }
     }
 
+    @dagger.Component(modules = DaggerModule.class)
+    @Singleton
+    public interface DaggerComponent {
+        A getA();
+        A0 getA0();
+
+        @SuppressWarnings("unchecked")
+        default <T> T get(Class<T> c) {
+            if (c == A.class) {
+                return (T) getA();
+            }
+            if (c == A0.class) {
+                return (T) getA0();
+            }
+            throw new IllegalArgumentException();
+        }
+    }
+
+
     public static BeanBoxContext jbeanboxNormal() {
         return new BeanBoxContext(JBeanBoxConfig1.class).setIgnoreAnnotation(true);
     }
-    
+
     public static BeanBoxContext jbeanboxTypeSafe() {
         return new BeanBoxContext(JBeanBoxConfig2.class).setIgnoreAnnotation(true);
     }
-    
+
     public static BeanBoxContext jbeanboxAnnotation() {
         return new BeanBoxContext();
     }

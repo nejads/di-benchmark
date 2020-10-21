@@ -6,7 +6,7 @@ This project benchmark the following DI solutions:
 * [Guice](https://github.com/google/guice) - 4.1.0
 * [Genie](https://github.com/osglworks/java-di) - 0.2.0-SNAPSHOT
 * [Feather](https://github.com/zsoltherpai/feather) - 1.0
-* [Dagger](https://github.com/square/dagger) - 1.2.5
+* [Dagger](https://github.com/square/dagger) - 2.29.1
 * [Pico](http://picocontainer.com/) - 2.15
 * [jBeanBox](https://github.com/drinkjava2/jBeanBox) - 2.4.1
 * [Spring](http://projects.spring.io/spring-framework/) - 4.3.2.RELEASE
@@ -34,17 +34,17 @@ All injection is done through Constructor injection
 ```
 Split Starting up DI containers & instantiating a dependency graph 4999 times:
 -------------------------------------------------------------------------------
-                     Vanilla| start:     3ms   fetch:     5ms
-                       Guice| start:   458ms   fetch:   800ms
-                     Feather| start:     8ms   fetch:    73ms
-                      Dagger| start:    46ms   fetch:   130ms
-                        Pico| start:   166ms   fetch:   161ms
-                       Genie| start:   478ms   fetch:    98ms
-              jBeanBoxNormal| start:     7ms   fetch:   339ms
-            jBeanBoxTypeSafe| start:     3ms   fetch:   162ms
-          jBeanBoxAnnotation| start:     4ms   fetch:   597ms
-     SpringJavaConfiguration| start: 13956ms   fetch:  1149ms
-     SpringAnnotationScanned| start: 22302ms   fetch:  2738ms
+                     Vanilla| start:     2ms   fetch:     4ms
+                       Guice| start:   425ms   fetch:   690ms
+                     Feather| start:     7ms   fetch:    90ms
+                      Dagger| start:     9ms   fetch:     3ms
+                        Pico| start:   212ms   fetch:   263ms
+                       Genie| start:   487ms   fetch:   152ms
+              jBeanBoxNormal| start:     1ms   fetch:   264ms
+            jBeanBoxTypeSafe| start:     2ms   fetch:   117ms
+          jBeanBoxAnnotation| start:     0ms   fetch:   287ms
+     SpringJavaConfiguration| start: 13641ms   fetch:   431ms
+     SpringAnnotationScanned| start: 28109ms   fetch:   941ms
 ```
 
 ### Runtime bean injection benchmark
@@ -52,30 +52,30 @@ Split Starting up DI containers & instantiating a dependency graph 4999 times:
 ```
 Runtime benchmark, fetch new bean for 50K times:
 ---------------------------------------------------------
-                     Vanilla|     3ms
-                       Guice|   188ms
-                     Feather|    68ms
-                      Dagger|    28ms
-                       Genie|    45ms
-                        Pico|   353ms
-              jBeanBoxNormal|  1698ms
-            jBeanBoxTypeSafe|   880ms
-          jBeanBoxAnnotation|  2591ms
-     SpringJavaConfiguration|  1936ms
-     SpringAnnotationScanned|  2369ms
+                     Vanilla|     8ms
+                       Guice|   117ms
+                     Feather|    87ms
+                      Dagger|     7ms
+                       Genie|   101ms
+                        Pico|   702ms
+              jBeanBoxNormal|  1440ms
+            jBeanBoxTypeSafe|   562ms
+          jBeanBoxAnnotation|  1906ms
+     SpringJavaConfiguration|  1235ms
+     SpringAnnotationScanned|  1519ms
 ```
 
 ```
 Runtime benchmark, fetch new bean for 5M times:
 ---------------------------------------------------------
-                     Vanilla|   242ms
-                       Guice|  3022ms
-                     Feather|  1748ms
-                      Dagger|   842ms
-                       Genie|  1043ms
-                        Pico| 13185ms
+                     Vanilla|   193ms
+                       Guice|  2481ms
+                     Feather|   915ms
+                      Dagger|   106ms
+                       Genie|   764ms
+                        Pico| 12793ms
               jBeanBoxNormal| Timeout
-            jBeanBoxTypeSafe| 74607ms
+            jBeanBoxTypeSafe| 53595ms
           jBeanBoxAnnotation| Timeout
      SpringJavaConfiguration| Timeout
      SpringAnnotationScanned| Timeout
@@ -84,17 +84,17 @@ Runtime benchmark, fetch new bean for 5M times:
 ```
 Runtime benchmark, fetch singleton bean for 5M times:
 ---------------------------------------------------------
-                     Vanilla|     5ms
-                       Guice|   559ms
-                     Feather|   180ms
-                      Dagger|   746ms
-                       Genie|   118ms
-                        Pico|   225ms
-              jBeanBoxNormal|    59ms
-            jBeanBoxTypeSafe|    59ms
-          jBeanBoxAnnotation|   105ms
-     SpringJavaConfiguration|   245ms
-     SpringAnnotationScanned|   228ms
+                     Vanilla|     4ms
+                       Guice|   527ms
+                     Feather|   147ms
+                      Dagger|    10ms
+                       Genie|   102ms
+                        Pico|   325ms
+              jBeanBoxNormal|    57ms
+            jBeanBoxTypeSafe|    56ms
+          jBeanBoxAnnotation|    73ms
+     SpringJavaConfiguration|   226ms
+     SpringAnnotationScanned|   185ms
 ```
 
 ## How to run the benchmark

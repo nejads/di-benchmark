@@ -10,6 +10,7 @@ import static com.greenlaw110.di_benchmark.DIFactory.pico;
 import static com.greenlaw110.di_benchmark.DIFactory.spring;
 import static com.greenlaw110.di_benchmark.DIFactory.vanilla;
 
+import com.greenlaw110.di_benchmark.DIFactory.DaggerComponent;
 import com.greenlaw110.di_benchmark.objects.A0;
 import org.codejargon.feather.Feather;
 import org.osgl.inject.Genie;
@@ -37,7 +38,7 @@ public class RuntimeBenchmark {
 		VanillaContainer vanilla = vanilla();
 		Injector guice = guice();
 		Feather feather = Feather.with();
-		ObjectGraph dagger = dagger();
+		DaggerComponent dagger = dagger();
 		MutablePicoContainer pico = pico();
 		Genie genie = genie();
 		BeanBoxContext jbeanboxNormal = jbeanboxNormal();

@@ -9,6 +9,7 @@ import static com.greenlaw110.di_benchmark.DIFactory.pico;
 import static com.greenlaw110.di_benchmark.DIFactory.spring;
 import static com.greenlaw110.di_benchmark.DIFactory.vanilla;
 
+import com.greenlaw110.di_benchmark.DIFactory.DaggerComponent;
 import org.codejargon.feather.Feather;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -28,7 +29,7 @@ public class BenchmarkTest extends Assert {
 	static VanillaContainer vanilla;
 	static Injector guice;
 	static Feather feather;
-	static ObjectGraph dagger;
+	static DaggerComponent dagger;
 	static PicoContainer pico;
 	static Genie genie;
 	static ApplicationContext spring;

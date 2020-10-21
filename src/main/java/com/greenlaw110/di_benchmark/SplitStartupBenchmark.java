@@ -8,6 +8,7 @@ import static com.greenlaw110.di_benchmark.DIFactory.jbeanboxTypeSafe;
 import static com.greenlaw110.di_benchmark.DIFactory.pico;
 import static com.greenlaw110.di_benchmark.DIFactory.spring;
 
+import com.greenlaw110.di_benchmark.DIFactory.DaggerComponent;
 import org.codejargon.feather.Feather;
 import org.osgl.inject.Genie;
 import org.picocontainer.MutablePicoContainer;
@@ -63,7 +64,7 @@ public class SplitStartupBenchmark {
 		StopWatch.startAndFetch("Dagger", (start, fetch) -> {
 			for (int i = 0; i < iterations; ++i) {
 				long ms = System.currentTimeMillis();
-				ObjectGraph dagger = dagger();
+				DaggerComponent dagger = dagger();
 				long ms2 = System.currentTimeMillis();
 				start.addAndGet(ms2 - ms);
 				dagger.get(A.class);
